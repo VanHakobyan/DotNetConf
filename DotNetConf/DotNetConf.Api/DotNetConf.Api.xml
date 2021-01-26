@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetConf.Api</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetConf.Api.Common.Literal">
+            <summary>
+            Core literal
+            </summary>
+        </member>
+    </members>
+</doc>
