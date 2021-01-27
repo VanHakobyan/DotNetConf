@@ -24,6 +24,10 @@ namespace DotNetConf.Api
         {
             services.AddControllers();
             services.AddSwagger();
+            services.AddControllersWithViews().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

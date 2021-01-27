@@ -18,9 +18,6 @@ namespace DotNetConf.Api.Extension
         {
             app.UseHealthChecks(PathString.FromUriComponent(Literal.Health), new HealthCheckOptions
             {
-
-                //Predicate = _ => true,
-                //ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 ResponseWriter = async (context, report) =>
                 {
                     context.Response.ContentType = Literal.ContentType;
@@ -38,7 +35,7 @@ namespace DotNetConf.Api.Extension
                     };
                     
 
-                    await context.Response.WriteAsync(response);
+                    await context.Response.WriteAsync(JsonSerializer.Serialize(response,new JsonSerializerOptions{}));
                 }
             });
 

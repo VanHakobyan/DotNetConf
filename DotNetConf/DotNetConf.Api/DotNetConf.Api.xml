@@ -9,5 +9,21 @@
             Core literal
             </summary>
         </member>
+        <member name="M:DotNetConf.Api.Controllers.DictionaryController.Get">
+            <summary>
+            Dictionary error
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Model.HealthCheck.HealthCheck">
+            <summary>
+            HealthCheck
+            </summary>
+        </member>
+        <member name="T:DotNetConf.Api.Model.HealthCheck.HealthCheckResponse">
+            <summary>
+            HealthCheck Response
+            </summary>
+        </member>
     </members>
 </doc>
