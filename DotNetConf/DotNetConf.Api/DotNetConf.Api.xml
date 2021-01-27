@@ -32,12 +32,13 @@
             Context extension
             </summary>
         </member>
-        <member name="M:DotNetConf.Api.Extension.ContextExtension.AddContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:DotNetConf.Api.Extension.ContextExtension.AddContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,DotNetConf.Api.Model.ConnectionStringsConfigModel)">
             <summary>
             Added contexts and sql data log
             </summary>
             <param name="services"></param>
             <param name="configuration"></param>
+            <param name="config"></param>
             <returns></returns>
         </member>
         <member name="T:DotNetConf.Api.Extension.HealthCheckExtension">
@@ -45,11 +46,13 @@
             Health check extensions
             </summary>
         </member>
-        <member name="M:DotNetConf.Api.Extension.HealthCheckExtension.UseHealthChecks(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:DotNetConf.Api.Extension.HealthCheckExtension.ConfigureHealthChecks(Microsoft.Extensions.DependencyInjection.IServiceCollection,DotNetConf.Api.Model.ConnectionStringsConfigModel,DotNetConf.Api.Model.HealthChecksConfigModel)">
             <summary>
             UseHealthChecks
             </summary>
-            <param name="app"></param>
+            <param name="services"></param>
+            <param name="connectionStringConfig"></param>
+            <param name="healthChecksConfig"></param>
             <returns></returns>
         </member>
         <member name="T:DotNetConf.Api.Extension.SwaggerExtension">
@@ -67,16 +70,6 @@
         <member name="T:DotNetConf.Api.Model.ConnectionStringsConfigModel">
             <summary>
             Connection string model
-            </summary>
-        </member>
-        <member name="T:DotNetConf.Api.Model.HealthCheck.HealthCheck">
-            <summary>
-            HealthCheck
-            </summary>
-        </member>
-        <member name="T:DotNetConf.Api.Model.HealthCheck.HealthCheckResponse">
-            <summary>
-            HealthCheck Response
             </summary>
         </member>
         <member name="T:DotNetConf.Api.Model.SelfReferencing.Department">

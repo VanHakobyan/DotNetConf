@@ -21,6 +21,7 @@
         
         public const string SqlLog = nameof(SqlLog);
         public const string ConnectionStrings = nameof(ConnectionStrings);
+        public const string HealthChecksUI = nameof(HealthChecksUI);
         public const string Master = nameof(Master);
         public const string ReadOnly = nameof(ReadOnly);
 

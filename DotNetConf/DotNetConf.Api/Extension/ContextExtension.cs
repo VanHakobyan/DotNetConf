@@ -24,15 +24,14 @@ namespace DotNetConf.Api.Extension
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configuration"></param>
+        /// <param name="config"></param>
         /// <returns></returns>
-        public static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration, ConnectionStringsConfigModel config)
         {
             NLogLoggerProvider provider = new();
             _logger = provider.CreateLogger(Literal.SqlLog);
             _configuration = configuration;
-            var config = new ConnectionStringsConfigModel();
-            configuration.GetSection(Literal.ConnectionStrings).Bind(config);
-
+           
             services.AddDbContext<DotNetConfContext>(options =>
                 {
                     options.UseSqlServer(config.Test, sqlOptions => sqlOptions.MigrationsAssembly(typeof(DotNetConfContext).GetTypeInfo().Assembly.GetName().Name))

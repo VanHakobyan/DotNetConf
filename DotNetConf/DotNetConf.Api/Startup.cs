@@ -5,10 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DotNetConf.Api.Common;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using DotNetConf.Api.Entity;
 using DotNetConf.Api.Extension;
+using DotNetConf.Api.Model;
 using DotNetConf.Api.Service.Implementation;
 using DotNetConf.Api.Service.Interface;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace DotNetConf.Api
 {
@@ -27,15 +29,17 @@ namespace DotNetConf.Api
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionStringsConfigModel = new ConnectionStringsConfigModel();
+            Configuration.GetSection(Literal.ConnectionStrings).Bind(connectionStringsConfigModel);
+
+
+            var healthChecksConfigModel = new HealthChecksConfigModel();
+            Configuration.GetSection(Literal.HealthChecksUI).Bind(healthChecksConfigModel);
+
             services.AddControllers();
             services.AddSwagger();
-            services.AddContext(Configuration);
-            services.AddHealthChecks()
-                .AddDbContextCheck<DotNetConfContext>()
-                .AddDbContextCheck<ReadOnlyDbContext>();// comment this 
-            //.AddSqlServer(config.Test, name: Literal.Master)
-            //.AddSqlServer(config.TestReadOnly, name: Literal.ReadOnly);// uncomment this
-
+            services.AddContext(Configuration, connectionStringsConfigModel);
+            services.ConfigureHealthChecks(connectionStringsConfigModel, healthChecksConfigModel);
 
             //for reference loop handling 
             //services.AddControllersWithViews().AddJsonOptions(options =>
@@ -65,8 +69,6 @@ namespace DotNetConf.Api
                 });
             }
 
-            app.UseHealthChecks();
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -75,6 +77,13 @@ namespace DotNetConf.Api
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks(Literal.Health, new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+
+                endpoints.MapHealthChecksUI();
                 endpoints.MapControllers();
             });
         }

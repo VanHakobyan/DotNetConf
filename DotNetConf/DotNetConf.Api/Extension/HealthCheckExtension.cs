@@ -1,10 +1,6 @@
-﻿using System.Linq;
-using System.Text.Json;
-using DotNetConf.Api.Common;
-using DotNetConf.Api.Model.HealthCheck;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Http;
+﻿using DotNetConf.Api.Common;
+using DotNetConf.Api.Model;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetConf.Api.Extension
 {
@@ -16,34 +12,26 @@ namespace DotNetConf.Api.Extension
         /// <summary>
         /// UseHealthChecks
         /// </summary>
-        /// <param name="app"></param>
+        /// <param name="services"></param>
+        /// <param name="connectionStringConfig"></param>
+        /// <param name="healthChecksConfig"></param>
         /// <returns></returns>
-        public static IApplicationBuilder UseHealthChecks(this IApplicationBuilder app)
+        public static IServiceCollection ConfigureHealthChecks(this IServiceCollection services,
+            ConnectionStringsConfigModel connectionStringConfig, HealthChecksConfigModel healthChecksConfig)
         {
-            app.UseHealthChecks(PathString.FromUriComponent(Literal.Health), new HealthCheckOptions
-            {
-                ResponseWriter = async (context, report) =>
+            services.AddHealthChecks().AddApplicationInsightsPublisher()
+                .AddSqlServer(connectionStringConfig.Test, name: Literal.Master)
+                .AddSqlServer(connectionStringConfig.TestReadOnly, name: Literal.ReadOnly);
+
+            services.AddHealthChecksUI(opt =>
                 {
-                    context.Response.ContentType = Literal.ContentType;
+                    opt.SetEvaluationTimeInSeconds(healthChecksConfig.EvaluationTimeOnSeconds); //time in seconds between check
+                    opt.SetMinimumSecondsBetweenFailureNotifications(healthChecksConfig.MinimumSecondsBetweenFailureNotifications); //maximum history of checks
+                    opt.AddHealthCheckEndpoint(Literal.SwaggerTitle, Literal.Health); //map health check api
+                })
+                .AddInMemoryStorage(); //Storing in memory 
 
-                    var response = new HealthCheckResponse
-                    {
-                        Status = report.Status.ToString(),
-                        Checks = report.Entries.Select(x => new HealthCheck
-                        {
-                            Component = x.Key,
-                            Status = x.Value.Status.ToString(),
-                            Description = x.Value.Description
-                        }),
-                        Duration = report.TotalDuration
-                    };
-                    
-
-                    await context.Response.WriteAsync(JsonSerializer.Serialize(response,new JsonSerializerOptions{}));
-                }
-            });
-
-            return app;
+            return services;
         }
     }
 }

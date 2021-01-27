@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoFixture;
 using DotNetConf.Api.Common;
-using DotNetConf.Api.Model.HealthCheck;
 
 namespace DotNetConf.Api.Controllers
 {
@@ -18,7 +17,7 @@ namespace DotNetConf.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            var dictionary = new Fixture().CreateMany<KeyValuePair<int, HealthCheck>>(100)
+            var dictionary = new Fixture().CreateMany<KeyValuePair<int, string>>(100)
                 .ToDictionary(x => x.Key, x => x.Value);
             
             return Ok(dictionary);
