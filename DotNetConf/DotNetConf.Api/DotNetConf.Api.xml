@@ -20,6 +20,16 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:DotNetConf.Api.Controllers.DictionaryController.GetGuid">
+            <summary>
+            Get person fixture, System.NotSupportedException
+            </summary>
+            <response code="500">System.Text.Json doesn't deserialize non-string values into string properties.
+            A non-string value received for a string field results in a JsonException with the following message:
+            The JSON value could not be converted to System.String.
+            </response>          
+            <returns></returns>
+        </member>
         <member name="T:DotNetConf.Api.Controllers.PersonController">
             <summary>
             PersonController
@@ -114,10 +124,34 @@
             StaffMember
             </summary>
         </member>
+        <member name="T:DotNetConf.Api.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Program.Main(System.String[])">
+            <summary>
+            Start point
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:DotNetConf.Api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            CreateHostBuilder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="T:DotNetConf.Api.Service.Implementation.PersonService">
             <summary>
             Person service
             </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Service.Implementation.PersonService.#ctor(DotNetConf.Api.Entity.DotNetConfContext)">
+            <summary>
+            Ctor
+            </summary>
+            <param name="context"></param>
         </member>
         <member name="M:DotNetConf.Api.Service.Implementation.PersonService.GetPersons">
             <summary>
@@ -129,6 +163,12 @@
             <summary>
             IPersonService
             </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Service.Interface.IPersonService.GetPersons">
+            <summary>
+            GetPersons
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:DotNetConf.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
