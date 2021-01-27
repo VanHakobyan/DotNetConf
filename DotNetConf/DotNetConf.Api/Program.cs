@@ -1,11 +1,9 @@
+using System;
+using DotNetConf.Api.Common;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using NLog.Web;
 
 namespace DotNetConf.Api
 {
@@ -13,7 +11,21 @@ namespace DotNetConf.Api
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var logger = NLogBuilder.ConfigureNLog(Literal.NLogConfig).GetCurrentClassLogger();
+            try
+            {
+                logger.Debug(Literal.ApplicationStarting);
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception exception)
+            {
+                logger.Error(exception, Literal.ApplicationException);
+                throw;
+            }
+            finally
+            {
+                NLog.LogManager.Shutdown();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -21,6 +33,12 @@ namespace DotNetConf.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Trace);
+                })
+                .UseNLog();
     }
 }

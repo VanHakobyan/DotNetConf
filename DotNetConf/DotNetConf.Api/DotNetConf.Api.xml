@@ -15,6 +15,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:DotNetConf.Api.Controllers.PersonController.Get">
+            <summary>
+            Get persons
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:DotNetConf.Api.Model.HealthCheck.HealthCheck">
             <summary>
             HealthCheck

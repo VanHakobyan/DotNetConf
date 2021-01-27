@@ -16,5 +16,17 @@
         public const string ContentType = "application/json";
 
         public const string Health = "/health";
+        public const string JohnSmith = "John Smith";
+        public const string ControllerRoute = "api/[controller]";
+        
+        public const string SqlLog = nameof(SqlLog);
+        public const string ConnectionStrings = nameof(ConnectionStrings);
+        public const string Master = nameof(Master);
+        public const string ReadOnly = nameof(ReadOnly);
+
+        public const string NLogConfig = "nlog.config";
+        public const string ApplicationStarting = "Application starting";
+        public const string ApplicationException = "Stopped program because of exception";
+        public const string EnableSqlQueryLog = nameof(EnableSqlQueryLog);
     }
 }

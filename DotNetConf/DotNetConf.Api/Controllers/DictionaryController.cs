@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using AutoFixture;
+using DotNetConf.Api.Common;
 using DotNetConf.Api.Model.HealthCheck;
-using DotNetConf.Api.Model.SelfReferencing;
 
 namespace DotNetConf.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(Literal.ControllerRoute)]
     [ApiController]
     public class DictionaryController : ControllerBase
     {

@@ -3,31 +3,44 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using DotNetConf.Api.Common;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using System;
+using DotNetConf.Api.Entity;
 using DotNetConf.Api.Extension;
+using DotNetConf.Api.Service.Implementation;
+using DotNetConf.Api.Service.Interface;
 
 namespace DotNetConf.Api
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddSwagger();
-            services.AddControllersWithViews().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-            });
+            services.AddContext(Configuration);
+            services.AddHealthChecks()
+                .AddDbContextCheck<DotNetConfContext>()
+                .AddDbContextCheck<ReadOnlyDbContext>();// comment this 
+            //.AddSqlServer(config.Test, name: Literal.Master)
+            //.AddSqlServer(config.TestReadOnly, name: Literal.ReadOnly);// uncomment this
+
+
+            //for reference loop handling 
+            //services.AddControllersWithViews().AddJsonOptions(options =>
+            //{
+            //    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+            //});
+
+            services.AddTransient<IPersonService, PersonService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,6 +56,8 @@ namespace DotNetConf.Api
                     c.SupportedSubmitMethods(SubmitMethod.Get, SubmitMethod.Delete, SubmitMethod.Post, SubmitMethod.Put, SubmitMethod.Patch, SubmitMethod.Options);
                 });
             }
+
+            app.UseHealthChecks();
 
             app.UseHttpsRedirection();
 
