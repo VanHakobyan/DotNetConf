@@ -9,6 +9,10 @@ namespace DotNetConf.Api.Controllers
     [ApiController]
     public class SelfReferencingController : ControllerBase
     {
+        /// <summary>
+        /// Self referencing error
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {

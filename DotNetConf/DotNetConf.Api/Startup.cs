@@ -21,7 +21,10 @@ namespace DotNetConf.Api
             Configuration = configuration;
         }
 
-
+        /// <summary>
+        /// ConfigureServices
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -43,6 +46,11 @@ namespace DotNetConf.Api
             services.AddTransient<IPersonService, PersonService>();
         }
 
+        /// <summary>
+        /// Configure pipeline
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotNetConf.Api.Service.Implementation
 {
+    /// <summary>
+    /// Person service
+    /// </summary>
     public class PersonService : IPersonService
     {
         private readonly DotNetConfContext _context;
@@ -14,6 +17,10 @@ namespace DotNetConf.Api.Service.Implementation
             _context = context;
         }
 
+        /// <summary>
+        /// Get all persons
+        /// </summary>
+        /// <returns></returns>
         public async Task<IList<Person>> GetPersons()
         {
             return await _context.People.ToListAsync();

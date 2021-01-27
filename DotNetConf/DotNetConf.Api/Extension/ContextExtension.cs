@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using DotNetConf.Api.Common;
 using DotNetConf.Api.Entity;
 using DotNetConf.Api.Model;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -16,10 +11,20 @@ using NLog.Extensions.Logging;
 
 namespace DotNetConf.Api.Extension
 {
+    /// <summary>
+    /// Context extension
+    /// </summary>
     public static class ContextExtension
     {
         private static ILogger _logger;
         private static IConfiguration _configuration;
+
+        /// <summary>
+        /// Added contexts and sql data log
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
         public static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration)
         {
             NLogLoggerProvider provider = new();

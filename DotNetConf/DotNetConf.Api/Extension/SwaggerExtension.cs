@@ -5,8 +5,16 @@ using Microsoft.OpenApi.Models;
 
 namespace DotNetConf.Api.Extension
 {
+    /// <summary>
+    /// Swagger extensions
+    /// </summary>
     public static class SwaggerExtension
     {
+        /// <summary>
+        /// Configure swagger
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSwagger(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>

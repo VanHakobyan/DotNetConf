@@ -21,6 +21,54 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:DotNetConf.Api.Controllers.SelfReferencingController.Get">
+            <summary>
+            Self referencing error
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Extension.ContextExtension">
+            <summary>
+            Context extension
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Extension.ContextExtension.AddContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Added contexts and sql data log
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Extension.HealthCheckExtension">
+            <summary>
+            Health check extensions
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Extension.HealthCheckExtension.UseHealthChecks(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            UseHealthChecks
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Extension.SwaggerExtension">
+            <summary>
+            Swagger extensions
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Extension.SwaggerExtension.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure swagger
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Model.ConnectionStringsConfigModel">
+            <summary>
+            Connection string model
+            </summary>
+        </member>
         <member name="T:DotNetConf.Api.Model.HealthCheck.HealthCheck">
             <summary>
             HealthCheck
@@ -30,6 +78,45 @@
             <summary>
             HealthCheck Response
             </summary>
+        </member>
+        <member name="T:DotNetConf.Api.Model.SelfReferencing.Department">
+            <summary>
+            Department
+            </summary>
+        </member>
+        <member name="T:DotNetConf.Api.Model.SelfReferencing.StaffMember">
+            <summary>
+            StaffMember
+            </summary>
+        </member>
+        <member name="T:DotNetConf.Api.Service.Implementation.PersonService">
+            <summary>
+            Person service
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Service.Implementation.PersonService.GetPersons">
+            <summary>
+            Get all persons
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Service.Interface.IPersonService">
+            <summary>
+            IPersonService
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            ConfigureServices
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DotNetConf.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure pipeline
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>
