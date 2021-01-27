@@ -9,11 +9,27 @@
             Core literal
             </summary>
         </member>
+        <member name="T:DotNetConf.Api.Controllers.DictionaryController">
+            <summary>
+            DictionaryController
+            </summary>
+        </member>
         <member name="M:DotNetConf.Api.Controllers.DictionaryController.Get">
             <summary>
             Dictionary error
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Controllers.PersonController">
+            <summary>
+            PersonController
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Controllers.PersonController.#ctor(DotNetConf.Api.Service.Interface.IPersonService)">
+            <summary>
+            Ctor
+            </summary>
+            <param name="service"></param>
         </member>
         <member name="M:DotNetConf.Api.Controllers.PersonController.Get">
             <summary>
@@ -21,11 +37,27 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:DotNetConf.Api.Controllers.SelfReferencingController">
+            <summary>
+            SelfReferencingController
+            </summary>
+        </member>
         <member name="M:DotNetConf.Api.Controllers.SelfReferencingController.Get">
             <summary>
             Self referencing error
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Entity.ReadOnlyDbContext">
+            <summary>
+            ReadOnlyDbContext
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Entity.ReadOnlyDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DotNetConf.Api.Entity.DotNetConfContext})">
+            <summary>
+            Ctor
+            </summary>
+            <param name="options"></param>
         </member>
         <member name="T:DotNetConf.Api.Extension.ContextExtension">
             <summary>

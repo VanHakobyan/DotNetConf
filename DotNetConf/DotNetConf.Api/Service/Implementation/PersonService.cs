@@ -12,6 +12,10 @@ namespace DotNetConf.Api.Service.Implementation
     public class PersonService : IPersonService
     {
         private readonly DotNetConfContext _context;
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="context"></param>
         public PersonService(DotNetConfContext context)
         {
             _context = context;

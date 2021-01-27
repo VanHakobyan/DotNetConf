@@ -31,7 +31,7 @@ namespace DotNetConf.Api.Extension
             NLogLoggerProvider provider = new();
             _logger = provider.CreateLogger(Literal.SqlLog);
             _configuration = configuration;
-           
+
             services.AddDbContext<DotNetConfContext>(options =>
                 {
                     options.UseSqlServer(config.Test, sqlOptions => sqlOptions.MigrationsAssembly(typeof(DotNetConfContext).GetTypeInfo().Assembly.GetName().Name))

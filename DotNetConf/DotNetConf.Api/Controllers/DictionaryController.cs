@@ -6,6 +6,9 @@ using DotNetConf.Api.Common;
 
 namespace DotNetConf.Api.Controllers
 {
+    /// <summary>
+    /// DictionaryController
+    /// </summary>
     [Route(Literal.ControllerRoute)]
     [ApiController]
     public class DictionaryController : ControllerBase
@@ -19,7 +22,7 @@ namespace DotNetConf.Api.Controllers
         {
             var dictionary = new Fixture().CreateMany<KeyValuePair<int, string>>(100)
                 .ToDictionary(x => x.Key, x => x.Value);
-            
+
             return Ok(dictionary);
         }
     }

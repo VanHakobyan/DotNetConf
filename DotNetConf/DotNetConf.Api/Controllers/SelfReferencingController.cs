@@ -5,6 +5,9 @@ using DotNetConf.Api.Model.SelfReferencing;
 
 namespace DotNetConf.Api.Controllers
 {
+    /// <summary>
+    /// SelfReferencingController
+    /// </summary>
     [Route(Literal.ControllerRoute)]
     [ApiController]
     public class SelfReferencingController : ControllerBase

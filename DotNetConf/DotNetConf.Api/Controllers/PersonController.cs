@@ -5,11 +5,18 @@ using DotNetConf.Api.Service.Interface;
 
 namespace DotNetConf.Api.Controllers
 {
+    /// <summary>
+    /// PersonController
+    /// </summary>
     [Route(Literal.ControllerRoute)]
     [ApiController]
     public class PersonController : ControllerBase
     {
         private readonly IPersonService _service;
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="service"></param>
         public PersonController(IPersonService service)
         {
             _service = service;

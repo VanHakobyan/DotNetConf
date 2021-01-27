@@ -9,6 +9,10 @@ namespace DotNetConf.Api.Service.Interface
     /// </summary>
     public interface IPersonService
     {
+        /// <summary>
+        /// GetPersons
+        /// </summary>
+        /// <returns></returns>
         Task<IList<Person>> GetPersons();
     }
 }

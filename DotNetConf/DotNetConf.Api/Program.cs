@@ -7,8 +7,15 @@ using NLog.Web;
 
 namespace DotNetConf.Api
 {
+    /// <summary>
+    /// Program
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Start point
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var logger = NLogBuilder.ConfigureNLog(Literal.NLogConfig).GetCurrentClassLogger();
@@ -28,6 +35,11 @@ namespace DotNetConf.Api
             }
         }
 
+        /// <summary>
+        /// CreateHostBuilder
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

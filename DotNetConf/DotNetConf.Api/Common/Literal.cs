@@ -1,4 +1,5 @@
-﻿namespace DotNetConf.Api.Common
+﻿#pragma warning disable 1591
+namespace DotNetConf.Api.Common
 {
     /// <summary>
     /// Core literal
@@ -18,7 +19,7 @@
         public const string Health = "/health";
         public const string JohnSmith = "John Smith";
         public const string ControllerRoute = "api/[controller]";
-        
+
         public const string SqlLog = nameof(SqlLog);
         public const string ConnectionStrings = nameof(ConnectionStrings);
         public const string HealthChecksUI = nameof(HealthChecksUI);
