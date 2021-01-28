@@ -28,7 +28,7 @@ namespace DotNetConf.Api.Extension
         /// <returns></returns>
         public static IServiceCollection AddContext(this IServiceCollection services, IConfiguration configuration, ConnectionStringsConfigModel config)
         {
-            NLogLoggerProvider provider = new();
+            var provider = new NLogLoggerProvider();
             _logger = provider.CreateLogger(Literal.SqlLog);
             _configuration = configuration;
 
