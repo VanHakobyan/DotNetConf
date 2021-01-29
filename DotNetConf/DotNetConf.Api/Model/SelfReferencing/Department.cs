@@ -7,6 +7,9 @@ namespace DotNetConf.Api.Model.SelfReferencing
     /// </summary>
     public class Department
     {
+        /// <summary>
+        /// StaffMembers
+        /// </summary>
         public List<StaffMember> StaffMembers { get; set; }
     }
 }

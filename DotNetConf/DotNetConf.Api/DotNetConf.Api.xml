@@ -135,9 +135,24 @@
             Department
             </summary>
         </member>
+        <member name="P:DotNetConf.Api.Model.SelfReferencing.Department.StaffMembers">
+            <summary>
+            StaffMembers
+            </summary>
+        </member>
         <member name="T:DotNetConf.Api.Model.SelfReferencing.StaffMember">
             <summary>
             StaffMember
+            </summary>
+        </member>
+        <member name="P:DotNetConf.Api.Model.SelfReferencing.StaffMember.FirstName">
+            <summary>
+            FirstName
+            </summary>
+        </member>
+        <member name="P:DotNetConf.Api.Model.SelfReferencing.StaffMember.Department">
+            <summary>
+            Department
             </summary>
         </member>
         <member name="T:DotNetConf.Api.Program">

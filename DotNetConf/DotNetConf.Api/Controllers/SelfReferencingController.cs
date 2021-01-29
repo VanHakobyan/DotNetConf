@@ -19,12 +19,12 @@ namespace DotNetConf.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var staff = new StaffMember { FirstName = Literal.JohnSmith }; //(Really this should actually be calling a repository etc). 
+            var staffMember = new StaffMember { FirstName = Literal.JohnSmith }; //(Really this should actually be calling a repository etc). 
             var department = new Department();
-            staff.Department = department;
-            department.StaffMembers = new List<StaffMember> { staff };
+            staffMember.Department = department;
+            department.StaffMembers = new List<StaffMember> { staffMember };
 
-            return Ok(staff);
+            return Ok(staffMember);
         }
     }
 }
