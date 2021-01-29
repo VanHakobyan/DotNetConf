@@ -29,5 +29,27 @@ namespace DotNetConf.Api.Service.Implementation
         {
             return await _context.People.ToListAsync();
         }
+
+        /// <summary>
+        /// GetPersonById
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Person> GetPersonById(int id)
+        {
+            return await _context.People.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        /// <summary>
+        /// AddPerson
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        public async Task<Person> AddPerson(Person person)
+        {
+            var entityEntry = await _context.AddAsync(person);
+            await _context.SaveChangesAsync();
+            return entityEntry.Entity;
+        }
     }
 }

@@ -15,12 +15,15 @@
             </summary>
         </member>
         <member name="M:DotNetConf.Api.Controllers.DictionaryController.Get">
-            <summary>
-            Dictionary error
-            </summary>
-            <returns></returns>
+             <summary>
+             Dictionary with non complex key 
+             </summary>
+             <response code="200">Dictionary with non complex key 
+            can convert to System.String.
+             </response>          
+             <returns></returns>
         </member>
-        <member name="M:DotNetConf.Api.Controllers.DictionaryController.GetGuid">
+        <member name="M:DotNetConf.Api.Controllers.DictionaryController.GetByPersonKey">
             <summary>
             Get person fixture, System.NotSupportedException
             </summary>
@@ -45,6 +48,19 @@
             <summary>
             Get persons
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetConf.Api.Controllers.PersonController.GetById(System.Int32)">
+            <summary>
+            Get person by id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetConf.Api.Controllers.PersonController.Create(DotNetConf.Api.Entity.Person)">
+            <summary>
+            Create
+            </summary>
+            <param name="person"></param>
             <returns></returns>
         </member>
         <member name="T:DotNetConf.Api.Controllers.SelfReferencingController">
@@ -159,6 +175,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:DotNetConf.Api.Service.Implementation.PersonService.GetPersonById(System.Int32)">
+            <summary>
+            GetPersonById
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetConf.Api.Service.Implementation.PersonService.AddPerson(DotNetConf.Api.Entity.Person)">
+            <summary>
+            AddPerson
+            </summary>
+            <param name="person"></param>
+            <returns></returns>
+        </member>
         <member name="T:DotNetConf.Api.Service.Interface.IPersonService">
             <summary>
             IPersonService
@@ -169,6 +199,36 @@
             GetPersons
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:DotNetConf.Api.Service.Interface.IPersonService.AddPerson(DotNetConf.Api.Entity.Person)">
+            <summary>
+            AddPerson
+            </summary>
+            <param name="person"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetConf.Api.Service.Interface.IPersonService.GetPersonById(System.Int32)">
+            <summary>
+            GetPersonById
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotNetConf.Api.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="P:DotNetConf.Api.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:DotNetConf.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Ctor
+            </summary>
+            <param name="configuration"></param>
         </member>
         <member name="M:DotNetConf.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

@@ -30,5 +30,6 @@ namespace DotNetConf.Api.Common
         public const string ApplicationStarting = "Application starting";
         public const string ApplicationException = "Stopped program because of exception";
         public const string EnableSqlQueryLog = nameof(EnableSqlQueryLog);
+        public const string GetById = nameof(GetById);
     }
 }

@@ -42,7 +42,7 @@ namespace DotNetConf.Api.Controllers
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("person")]
-        public ActionResult GetGuid()
+        public ActionResult GetByPersonKey()
         {
             var dictionary = new Fixture().CreateMany<KeyValuePair<Person, string>>(100)
                 .ToDictionary(x => x.Key, x => x.Value);
