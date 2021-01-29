@@ -35,16 +35,16 @@ namespace DotNetConf.Api.Extension
             services.AddDbContext<DotNetConfContext>(options =>
                 {
                     options.UseSqlServer(config.Test, sqlOptions => sqlOptions.MigrationsAssembly(typeof(DotNetConfContext).GetTypeInfo().Assembly.GetName().Name))
-                        .LogTo(Log, new[] { RelationalEventId.CommandExecuted })
-                        .EnableSensitiveDataLogging();
+                        .LogTo(Log, new[] { RelationalEventId.CommandExecuted });
+                        //.EnableSensitiveDataLogging();// uncomment this
                 }, ServiceLifetime.Transient
             );
 
             services.AddDbContext<ReadOnlyDbContext>(options =>
                 {
                     options.UseSqlServer(config.TestReadOnly, sqlOptions => sqlOptions.MigrationsAssembly(typeof(ReadOnlyDbContext).GetTypeInfo().Assembly.GetName().Name))
-                        .LogTo(Log, new[] { RelationalEventId.CommandExecuted })
-                        .EnableSensitiveDataLogging();
+                        .LogTo(Log, new[] { RelationalEventId.CommandExecuted });
+                        //.EnableSensitiveDataLogging();
                 }, ServiceLifetime.Transient
             );
 

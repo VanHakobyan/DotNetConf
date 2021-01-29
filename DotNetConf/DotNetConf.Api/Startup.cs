@@ -48,8 +48,8 @@ namespace DotNetConf.Api
 
             services.AddControllers();
             services.AddSwagger();
-            services.AddContext(Configuration, connectionStringsConfigModel);
             services.ConfigureHealthChecks(connectionStringsConfigModel, healthChecksConfigModel);
+            services.AddContext(Configuration, connectionStringsConfigModel);
 
             //for reference loop handling 
             //services.AddControllersWithViews().AddJsonOptions(options =>
