@@ -11,5 +11,5 @@
 * SQL query logging
 
 
-Presentation: <a href="https://github.com/VanHakobyan/DotNetConf/blob/master/Resources/DotNetConf2021.pptx">
+Presentation you can see <a href="https://github.com/VanHakobyan/DotNetConf/blob/master/Resources/DotNetConf2021.pptx">here</a>
  
