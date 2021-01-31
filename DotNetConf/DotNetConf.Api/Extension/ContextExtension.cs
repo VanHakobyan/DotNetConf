@@ -35,8 +35,8 @@ namespace DotNetConf.Api.Extension
             services.AddDbContext<DotNetConfContext>(options =>
                 {
                     options.UseSqlServer(config.Test, sqlOptions => sqlOptions.MigrationsAssembly(typeof(DotNetConfContext).GetTypeInfo().Assembly.GetName().Name))
-                        .LogTo(Log, new[] { RelationalEventId.CommandExecuted });
-                        //.EnableSensitiveDataLogging();// uncomment this
+                        .LogTo(Log, new[] { RelationalEventId.CommandExecuted })
+                        .EnableSensitiveDataLogging();// uncomment this
                 }, ServiceLifetime.Transient
             );
 
